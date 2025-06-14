@@ -18,7 +18,7 @@ class MealsScreen extends StatelessWidget {
       itemCount: meals.length,
       itemBuilder: (ctx, index) => Text(dummyMeals[index].title),
     );
-    if (dummyMeals.isEmpty) {
+    if (meals.isEmpty) {
       content = Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 128, horizontal: 32),
