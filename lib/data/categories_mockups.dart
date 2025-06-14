@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:meals/models/category.dart';
+import 'package:flutter/material.dart';
 
-List<Category> registeredCategories = [
+const registeredCategories = [
   Category(
     id: 'c1',
     title: 'Italian',
@@ -10,7 +10,7 @@ List<Category> registeredCategories = [
   Category(
     id: 'c2',
     title: 'Quick & Easy',
-    color: Colors.brown,
+    color: Colors.red,
   ),
   Category(
     id: 'c3',
@@ -20,46 +20,36 @@ List<Category> registeredCategories = [
   Category(
     id: 'c4',
     title: 'German',
-    color: Colors.yellow,
+    color: Colors.amber,
   ),
   Category(
     id: 'c5',
-    title: 'Brazilian',
-    color: Colors.green,
+    title: 'Light & Lovely',
+    color: Colors.blue,
   ),
   Category(
     id: 'c6',
-    title: 'Spanish',
-    color: Colors.red,
+    title: 'Exotic',
+    color: Colors.green,
   ),
   Category(
     id: 'c7',
-    title: 'Japanese',
-    color: Colors.white,
+    title: 'Breakfast',
+    color: Colors.lightBlue,
   ),
   Category(
     id: 'c8',
-    title: 'Thai',
-    color: Colors.pink,
+    title: 'Asian',
+    color: Colors.lightGreen,
   ),
   Category(
     id: 'c9',
-    title: 'Breakfast',
-    color: const Color.fromARGB(255, 30, 176, 233),
+    title: 'French',
+    color: Colors.pink,
   ),
   Category(
     id: 'c10',
-    title: 'French',
-    color: const Color.fromARGB(255, 240, 88, 139),
-  ),
-  Category(
-    id: 'c11',
-    title: 'Exotic',
-    color: const Color.fromARGB(255, 255, 0, 242),
-  ),
-  Category(
-    id: 'c12',
     title: 'Summer',
-    color: const Color.fromARGB(255, 255, 174, 0),
+    color: Colors.teal,
   ),
 ];
