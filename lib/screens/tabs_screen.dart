@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals/models/meal.dart';
+import 'package:meals/providers/favorites_provider.dart';
 import 'package:meals/providers/meals_provider.dart';
 import 'package:meals/screens/categories_screen.dart';
 import 'package:meals/screens/filters_screen.dart';
@@ -16,40 +16,12 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
-  final List<Meal> _favoriteMeals = [];
   Map<Filter, bool> _selectedFilters = {
     Filter.glutenFree: false,
     Filter.lactoseFree: false,
     Filter.vegan: false,
     Filter.vegetarian: false,
   };
-
-  void _showInfoMessage(String message) {
-    ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
-
-  void _toggleMealFavoriteStatus(Meal meal) {
-    final isExisting = _favoriteMeals.contains(meal);
-    if (isExisting) {
-      setState(() {
-        _favoriteMeals.remove(meal);
-      });
-      _showInfoMessage('Refeição removida dos favoritos');
-      return;
-    }
-    setState(() {
-      _favoriteMeals.add(meal);
-    });
-    _showInfoMessage('Refeição adicionada aos favoritos');
-  }
 
   void _selectPage(int index) {
     setState(() {
@@ -95,13 +67,12 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     }).toList();
     Widget activePage = CategoriesScreen(
       availableMeals: availableMeals,
-      onToggleFavorite: _toggleMealFavoriteStatus,
     );
     String activePageTitle = 'Categorias';
     if (_selectedPageIndex == 1) {
+      final favoriteMeals = ref.watch(favoriteMealsProvider);
       activePage = MealsScreen(
-        meals: _favoriteMeals,
-        onToggleFavorite: _toggleMealFavoriteStatus,
+        meals: favoriteMeals,
       );
       activePageTitle = 'Favoritos';
     }
