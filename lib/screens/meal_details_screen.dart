@@ -65,11 +65,14 @@ class MealDetailsScreen extends ConsumerWidget {
             ),
             elevation: 8,
             clipBehavior: Clip.hardEdge,
-            child: Image.network(
-              meal.imageUrl,
-              height: 300,
-              width: double.infinity,
-              fit: BoxFit.cover,
+            child: Hero(
+              tag: meal.id,
+              child: Image.network(
+                meal.imageUrl,
+                height: 300,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           const SizedBox(height: 32),
